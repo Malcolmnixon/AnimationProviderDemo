@@ -3,28 +3,33 @@ class_name OpenXRAnimationProvider
 extends AnimationProvider
 
 
-# Bone Hierarchy Type
+## OpenXR Hand Tracking Animation Provider
+##
+## This Animation Provider provides live OpenXR hand-tracking animation data.
+
+
+## Bone Hierarchy Type
 enum BoneHierarchy {
-	PALM_WRIST,
-	WRIST_PALM,
-	PALM_ONLY,
-	WRIST_ONLY
+	PALM_WRIST,		## Hand skeleton relationsip is Palm -> Wrist -> Fingers
+	WRIST_PALM,		## Hand skeleton relationsip is Wrist -> Palm -> Fingers
+	PALM_ONLY,		## Hand skeleton relationsip is Palm -> Fingers
+	WRIST_ONLY		## Hand skeleton relationsip is Wrist -> Fingers
 }
 
-# Skeleton Rig Type
+## Skeleton Rig Type
 enum SkeletonRig {
-	OpenXR,
-	Humanoid
+	OpenXR,			## Skeleton is rigged for OpenXR bones and rotation
+	Humanoid		## Skeleton is rigged for Godot Humanoid bones and rotation
 }
 
-# Bone Update Type
+## Bone Update Type
 enum BoneUpdate {
-	FULL,					# Position and rotation
-	ROTATION_ONLY			# Rotation only
+	FULL,			## Apply full tracking data (position and rotation)
+	ROTATION_ONLY	## Apply only rotational data
 }
 
 # Array of bone names by SkeletonRig:HandJoints
-const BoneNames = [
+const _bone_names = [
 	[
 		"Palm",					# OpenXRInterface.HAND_JOINT_PALM = 0
 		"Wrist",				# OpenXRInterface.HAND_JOINT_WRIST = 1
@@ -84,19 +89,19 @@ const BoneNames = [
 ]
 
 # Array of bone names by SkeletonRig:Hand
-const BoneNameFormat = [
+const _bone_name_format = [
 	[ ":<bone>_L", ":<bone>_R" ],
 	[ ":Left<bone>", ":Right<bone>" ]
 ]
 
 # Array of bone rotations by SkeletonRig
-const BoneRotations : Array[Quaternion] = [
+const _bone_rotations : Array[Quaternion] = [
 	Quaternion.IDENTITY,
 	Quaternion(0.0, -0.7071067811, 0.7071067811, 0.0)
 ]
 
 # Array of parent bones by HandJoints
-const BoneParent : Array[int] = [
+const _bone_parents : Array[int] = [
 	-1,												# Palm -> (bone_hierarchy)
 	-1,												# Wrist -> (bone_hierarchy)
 	-1,												# Thumb_Metacarpal -> "hand"
@@ -195,6 +200,7 @@ func _set_bone_hierarchy(p_bone_hierarchy : BoneHierarchy) -> void:
 		_populate_animations()
 
 
+# Handle setting the bone update mode
 func _set_bone_update(p_bone_update : BoneUpdate) -> void:
 	bone_update = p_bone_update
 	if is_inside_tree() and _openxr_animation:
@@ -217,10 +223,10 @@ func _initialize_animations() -> void:
 # Populate the animations
 func _populate_animations() -> void:
 	# Populate the arrays
-	var format : String = BoneNameFormat[skeleton_rig][hand]
+	var format : String = _bone_name_format[skeleton_rig][hand]
 	for bone in OpenXRInterface.HAND_JOINT_MAX:
-		_names[bone] = format.replace("<bone>", BoneNames[skeleton_rig][bone])
-		_parents[bone] = BoneParent[bone]
+		_names[bone] = format.replace("<bone>", _bone_names[skeleton_rig][bone])
+		_parents[bone] = _bone_parents[bone]
 		_positions[bone] = Vector3.ZERO
 		_rotations[bone] = Quaternion.IDENTITY
 		_rotations_inv[bone] = Quaternion.IDENTITY
@@ -288,7 +294,7 @@ func _update_animations() -> void:
 		return
 
 	# Read the hand-joint information
-	var adjustment := BoneRotations[skeleton_rig]
+	var adjustment := _bone_rotations[skeleton_rig]
 	for bone in OpenXRInterface.HAND_JOINT_MAX:
 		var pos := xr.get_hand_joint_position(hand, bone)
 		var rot := xr.get_hand_joint_rotation(hand, bone)

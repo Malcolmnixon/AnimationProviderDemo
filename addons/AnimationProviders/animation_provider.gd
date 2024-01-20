@@ -4,6 +4,13 @@ class_name AnimationProvider
 extends Node
 
 
+## Animation Provider Base Script
+##
+## Animation Providers feed live-animation data to an [AnimationPlayer]. To
+## use Animation Providers, add the appropriate provider for your live-animation
+## or mocap hardware as a child of an [AnimationPlayer].
+
+
 # Animation library instance
 var _library : AnimationLibrary
 
@@ -51,21 +58,24 @@ func _physics_process(_delta : float) -> void:
 	_update_animations()
 
 
-# Get the animation library
+## Get the animation library
 func get_library() -> AnimationLibrary:
 	return _library
 
 
 # Initialize the animations (implemented in providers)
 func _initialize_animations() -> void:
-	pass
+	push_error("Only implementations of AnimationProvider should be used")
+	breakpoint
 
 
 # Populate the animations (implemented in providers)
 func _populate_animations() -> void:
-	pass
+	push_error("Only implementations of AnimationProvider should be used")
+	breakpoint
 
 
 # Update the animations (implemented in providers)
 func _update_animations() -> void:
-	pass
+	push_error("Only implementations of AnimationProvider should be used")
+	breakpoint

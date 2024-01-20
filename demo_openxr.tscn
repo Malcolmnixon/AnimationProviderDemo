@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://d11bqbv0ji0lk"]
 
-[ext_resource type="PackedScene" uid="uid://dvym5e2crulbo" path="res://assets/avatar/AvatarOpenXR.gltf" id="1_lmm5j"]
-[ext_resource type="Script" path="res://helpers/avatar.gd" id="2_kvnlf"]
-[ext_resource type="Script" path="res://addons/AnimationProviders/openxr/openxr_animation_provider.gd" id="2_w5plk"]
-[ext_resource type="PackedScene" uid="uid://clpij0u406tcu" path="res://helpers/mirrors.tscn" id="4_11e2y"]
+[ext_resource type="Script" path="res://helpers/avatar.gd" id="1_st4ms"]
+[ext_resource type="PackedScene" uid="uid://dvym5e2crulbo" path="res://assets/avatar/AvatarOpenXR.gltf" id="2_13dlo"]
+[ext_resource type="Script" path="res://addons/AnimationProviders/openxr/openxr_animation_provider.gd" id="3_cwobt"]
+[ext_resource type="PackedScene" uid="uid://clpij0u406tcu" path="res://helpers/mirrors.tscn" id="4_0psta"]
 
 [sub_resource type="GDScript" id="GDScript_6yruk"]
 script/source = "extends Node3D
@@ -407,7 +407,6 @@ animation = &"RightHand/OpenXR"
 animation = &"LeftHand/OpenXR"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cgb86"]
-graph_offset = Vector2(0, -88)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_neuvy")
 nodes/Add2/position = Vector2(300, 20)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_dvpnv")
@@ -417,7 +416,7 @@ nodes/Animation/position = Vector2(20, -20)
 nodes/output/position = Vector2(640, 20)
 node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
 
-[node name="Demo" type="Node3D"]
+[node name="DemoOpenXR" type="Node3D"]
 script = SubResource("GDScript_6yruk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -442,12 +441,13 @@ tracker = &"right_hand"
 pose = &"skeleton"
 
 [node name="Avatar" type="Node3D" parent="." node_paths=PackedStringArray("start_ik", "origin", "camera")]
-script = ExtResource("2_kvnlf")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0999999, 0)
+script = ExtResource("1_st4ms")
 start_ik = [NodePath("AvatarOpenXR2/AvatarOpenXR/Skeleton3D/LeftArm"), NodePath("AvatarOpenXR2/AvatarOpenXR/Skeleton3D/RightArm")]
 origin = NodePath("../XROrigin3D")
 camera = NodePath("../XROrigin3D/XRCamera3D")
 
-[node name="AvatarOpenXR2" parent="Avatar" instance=ExtResource("1_lmm5j")]
+[node name="AvatarOpenXR2" parent="Avatar" instance=ExtResource("2_13dlo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Avatar/AvatarOpenXR2/AvatarOpenXR" index="0"]
@@ -526,12 +526,12 @@ libraries = {
 }
 
 [node name="LeftHand" type="Node" parent="Avatar/AvatarOpenXR2/AvatarOpenXR/AnimationPlayer"]
-script = ExtResource("2_w5plk")
+script = ExtResource("3_cwobt")
 bone_hierarchy = 3
 bone_update = 1
 
 [node name="RightHand" type="Node" parent="Avatar/AvatarOpenXR2/AvatarOpenXR/AnimationPlayer"]
-script = ExtResource("2_w5plk")
+script = ExtResource("3_cwobt")
 hand = 1
 bone_hierarchy = 3
 bone_update = 1
@@ -546,7 +546,7 @@ tree_root = SubResource("AnimationNodeBlendTree_cgb86")
 anim_player = NodePath("../AvatarOpenXR/AnimationPlayer")
 parameters/Add2/add_amount = 1.0
 
-[node name="Mirrors" parent="." instance=ExtResource("4_11e2y")]
+[node name="Mirrors" parent="." instance=ExtResource("4_0psta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 
 [editable path="Avatar/AvatarOpenXR2"]
