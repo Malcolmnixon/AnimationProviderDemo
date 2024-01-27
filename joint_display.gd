@@ -5,21 +5,22 @@ extends Node3D
 const Axis3Scene : PackedScene = preload("res://helpers/axis_3.tscn")
 
 
-var _reader : AxisStudioReader
+var _reader : VmcReader
 
-var _targets : Array[Node3D] = []
+var _targets : Dictionary = {}
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Construct the reader
-	_reader = AxisStudioReader.new()
+	_reader = VmcReader.new()
 	_reader.listen()
 
 	# Construct the targets
-	for index in Joint.JOINT_COUNT:
+	var joints := _reader.get_body_joints()
+	for key in joints:
 		var axis : Node3D = Axis3Scene.instantiate()
-		_targets.append(axis)
+		_targets[key] = axis
 		add_child(axis)
 
 
@@ -28,8 +29,11 @@ func _process(delta):
 	if not _reader.read():
 		return
 
-	var joints := _reader.get_joints()
-	for index in Joint.JOINT_COUNT:
-		if joints[index].valid:
-			_targets[index].position = joints[index].position
-			_targets[index].basis = Basis(joints[index].rotation)
+	var joints := _reader.get_body_joints()
+	for key in joints:
+		if not key in _targets:
+			var axis : Node3D = Axis3Scene.instantiate()
+			_targets[key] = axis
+			add_child(axis)
+		_targets[key].position = joints[key].position
+		_targets[key].basis = Basis(joints[key].rotation)
