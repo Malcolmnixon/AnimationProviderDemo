@@ -122,78 +122,81 @@ var _vmc_joint_names := {
 	"RightLittleDistal" : VmcJoint.RIGHT_LITTLE_DISTAL
 }
 
+# Sqrt 1/2 (for roll)
+const _SQRT12 : float = 0.707106781186548
+
 const _vmc_joint_info : Array[Dictionary] = [
 	# 0: VmcJoint.HIPS
 	{
 		parent = -1,
 		body = HumanoidModel.Joint.HIPS,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 1.0, 0.0, 0.0)
 	},
 	# 1: VmcJoint.SPINE
 	{
 		parent = VmcJoint.HIPS,
 		body = HumanoidModel.Joint.SPINE,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 1.0, 0.0, 0.0)
 	},
 	# 2: VmcJoint.CHEST
 	{
 		parent = VmcJoint.SPINE,
 		body = HumanoidModel.Joint.CHEST,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 1.0, 0.0, 0.0)
 	},
 	# 3: VmcJoint.UPPER_CHEST
 	{
 		parent = VmcJoint.CHEST,
 		body = HumanoidModel.Joint.UPPER_CHEST,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 1.0, 0.0, 0.0)
 	},
 	# 4: VmcJoint.NECK
 	{
 		parent = VmcJoint.UPPER_CHEST,
 		body = HumanoidModel.Joint.NECK,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 1.0, 0.0, 0.0)
 	},
 	# 5: VmcJoint.HEAD
 	{
 		parent = VmcJoint.NECK,
 		body = HumanoidModel.Joint.HEAD,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 1.0, 0.0, 0.0)
 	},
 	# 6: VmcJoint.LEFT_EYE
 	{
 		parent = VmcJoint.HEAD,
 		body = -1,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 1.0, 0.0, 0.0)
 	},
 	# 7: VmcJoint.RIGHT_EYE
 	{
 		parent = VmcJoint.HEAD,
 		body = -1,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 1.0, 0.0, 0.0)
 	},
 	# 8: VmcJoint.JAW
 	{
 		parent = VmcJoint.HEAD,
 		body = -1,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 1.0, 0.0, 0.0)
 	},
 	# 9: VmcJoint.LEFT_UPPER_LEG
 	{
 		parent = VmcJoint.HIPS,
 		body = HumanoidModel.Joint.LEFT_UPPER_LEG,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(1.0, 0.0, 0.0, 0.0)
 	},
 	# 10: VmcJoint.LEFT_LOWER_LEG
 	{
 		parent = VmcJoint.LEFT_UPPER_LEG,
 		body = HumanoidModel.Joint.LEFT_LOWER_LEG,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 0.0, 1.0, 0.0)
 	},
 	# 11: VmcJoint.LEFT_FOOT
 	{
 		parent = VmcJoint.LEFT_LOWER_LEG,
 		body = HumanoidModel.Joint.LEFT_FOOT,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-_SQRT12, 0.0, 0.0, _SQRT12)
 	},
 	# 12: VmcJoint.LEFT_TOES
 	{
@@ -205,19 +208,19 @@ const _vmc_joint_info : Array[Dictionary] = [
 	{
 		parent = VmcJoint.HIPS,
 		body = HumanoidModel.Joint.RIGHT_UPPER_LEG,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(1.0, 0.0, 0.0, 0.0)
 	},
 	# 14: VmcJoint.RIGHT_LOWER_LEG
 	{
 		parent = VmcJoint.RIGHT_UPPER_LEG,
 		body = HumanoidModel.Joint.RIGHT_LOWER_LEG,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 0.0, 1.0, 0.0)
 	},
 	# 15: VmcJoint.RIGHT_FOOT
 	{
 		parent = VmcJoint.RIGHT_LOWER_LEG,
 		body = HumanoidModel.Joint.RIGHT_FOOT,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-_SQRT12, 0.0, 0.0, _SQRT12)
 	},
 	# 16: VmcJoint.RIGHT_TOES
 	{
@@ -229,229 +232,229 @@ const _vmc_joint_info : Array[Dictionary] = [
 	{
 		parent = VmcJoint.UPPER_CHEST,
 		body = HumanoidModel.Joint.LEFT_SHOULDER,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, 0.5, 0.5)
 	},
 	# 18: VmcJoint.LEFT_UPPER_ARM
 	{
 		parent = VmcJoint.LEFT_SHOULDER,
 		body = HumanoidModel.Joint.LEFT_UPPER_ARM,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, -0.5, 0.5, 0.5)
 	},
 	# 19: VmcJoint.LEFT_LOWER_ARM
 	{
 		parent = VmcJoint.LEFT_UPPER_ARM,
 		body = HumanoidModel.Joint.LEFT_LOWER_ARM,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-_SQRT12, _SQRT12, 0.0, 0.0)
 	},
 	# 20: VmcJoint.LEFT_HAND
 	{
 		parent = VmcJoint.LEFT_LOWER_ARM,
 		body = HumanoidModel.Joint.LEFT_HAND,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 21: VmcJoint.RIGHT_SHOULDER
 	{
 		parent = VmcJoint.UPPER_CHEST,
 		body = HumanoidModel.Joint.RIGHT_SHOULDER,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, 0.5, -0.5)
 	},
 	# 22: VmcJoint.RIGHT_UPPER_ARM
 	{
 		parent = VmcJoint.RIGHT_SHOULDER,
 		body = HumanoidModel.Joint.RIGHT_UPPER_ARM,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 23: VmcJoint.RIGHT_LOWER_ARM
 	{
 		parent = VmcJoint.RIGHT_UPPER_ARM,
 		body = HumanoidModel.Joint.RIGHT_LOWER_ARM,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(_SQRT12, _SQRT12, 0.0, 0.0)
 	},
 	# 24: VmcJoint.RIGHT_HAND
 	{
 		parent = VmcJoint.RIGHT_LOWER_ARM,
 		body = HumanoidModel.Joint.RIGHT_HAND,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 25: VmcJoint.LEFT_THUMB_PROXIMAL
 	{
 		parent = VmcJoint.LEFT_HAND,
 		body = HumanoidModel.Joint.LEFT_THUMB_METACARPAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 0.0, _SQRT12, _SQRT12)
 	},
 	# 26: VmcJoint.LEFT_THUMB_INTERMEDIATE
 	{
 		parent = VmcJoint.LEFT_THUMB_PROXIMAL,
 		body = HumanoidModel.Joint.LEFT_THUMB_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 0.0, _SQRT12, _SQRT12)
 	},
 	# 27: VmcJoint.LEFT_THUMB_DISTAL
 	{
 		parent = VmcJoint.LEFT_THUMB_INTERMEDIATE,
 		body = HumanoidModel.Joint.LEFT_THUMB_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 0.0, _SQRT12, _SQRT12)
 	},
 	# 28: VmcJoint.LEFT_INDEX_PROXIMAL
 	{
 		parent = VmcJoint.LEFT_HAND,
 		body = HumanoidModel.Joint.LEFT_INDEX_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 29: VmcJoint.LEFT_INDEX_INTERMEDIATE
 	{
 		parent = VmcJoint.LEFT_INDEX_PROXIMAL,
 		body = HumanoidModel.Joint.LEFT_INDEX_INTERMEDIATE,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 30: VmcJoint.LEFT_INDEX_DISTAL
 	{
 		parent = VmcJoint.LEFT_INDEX_INTERMEDIATE,
 		body = HumanoidModel.Joint.LEFT_INDEX_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 31: VmcJoint.LEFT_MIDDLE_PROXIMAL
 	{
 		parent = VmcJoint.LEFT_HAND,
 		body = HumanoidModel.Joint.LEFT_MIDDLE_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 32: VmcJoint.LEFT_MIDDLE_INTERMEDIATE
 	{
 		parent = VmcJoint.LEFT_MIDDLE_PROXIMAL,
 		body = HumanoidModel.Joint.LEFT_MIDDLE_INTERMEDIATE,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 33: VmcJoint.LEFT_MIDDLE_DISTAL
 	{
 		parent = VmcJoint.LEFT_MIDDLE_INTERMEDIATE,
 		body = HumanoidModel.Joint.LEFT_MIDDLE_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 34: VmcJoint.LEFT_RING_PROXIMAL
 	{
 		parent = VmcJoint.LEFT_HAND,
 		body = HumanoidModel.Joint.LEFT_RING_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 35: VmcJoint.LEFT_RING_INTERMEDIATE
 	{
 		parent = VmcJoint.LEFT_RING_PROXIMAL,
 		body = HumanoidModel.Joint.LEFT_RING_INTERMEDIATE,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 36: VmcJoint.LEFT_RING_DISTAL
 	{
 		parent = VmcJoint.LEFT_RING_INTERMEDIATE,
 		body = HumanoidModel.Joint.LEFT_RING_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 37: VmcJoint.LEFT_LITTLE_PROXIMAL
 	{
 		parent = VmcJoint.LEFT_HAND,
 		body = HumanoidModel.Joint.LEFT_LITTLE_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 38: VmcJoint.LEFT_LITTLE_INTERMEDIATE
 	{
 		parent = VmcJoint.LEFT_LITTLE_PROXIMAL,
 		body = HumanoidModel.Joint.LEFT_LITTLE_INTERMEDIATE,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 39: VmcJoint.LEFT_LITTLE_DISTAL
 	{
 		parent = VmcJoint.LEFT_LITTLE_INTERMEDIATE,
 		body = HumanoidModel.Joint.LEFT_LITTLE_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(-0.5, 0.5, -0.5, -0.5)
 	},
 	# 40: VmcJoint.RIGHT_THUMB_PROXIMAL
 	{
 		parent = VmcJoint.RIGHT_HAND,
 		body = HumanoidModel.Joint.RIGHT_THUMB_METACARPAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 0.0, -_SQRT12, _SQRT12)
 	},
 	# 41: VmcJoint.RIGHT_THUMB_INTERMEDIATE
 	{
 		parent = VmcJoint.RIGHT_THUMB_PROXIMAL,
 		body = HumanoidModel.Joint.RIGHT_THUMB_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 0.0, -_SQRT12, _SQRT12)
 	},
 	# 42: VmcJoint.RIGHT_THUMB_DISTAL
 	{
 		parent = VmcJoint.RIGHT_THUMB_INTERMEDIATE,
 		body = HumanoidModel.Joint.RIGHT_THUMB_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.0, 0.0, -_SQRT12, _SQRT12)
 	},
 	# 43: VmcJoint.RIGHT_INDEX_PROXIMAL
 	{
 		parent = VmcJoint.RIGHT_HAND,
 		body = HumanoidModel.Joint.RIGHT_INDEX_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 44: VmcJoint.RIGHT_INDEX_INTERMEDIATE
 	{
 		parent = VmcJoint.RIGHT_INDEX_PROXIMAL,
 		body = HumanoidModel.Joint.RIGHT_INDEX_INTERMEDIATE,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 45: VmcJoint.RIGHT_INDEX_DISTAL
 	{
 		parent = VmcJoint.RIGHT_INDEX_INTERMEDIATE,
 		body = HumanoidModel.Joint.RIGHT_INDEX_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 46: VmcJoint.RIGHT_MIDDLE_PROXIMAL
 	{
 		parent = VmcJoint.RIGHT_HAND,
 		body = HumanoidModel.Joint.RIGHT_MIDDLE_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 47: VmcJoint.RIGHT_MIDDLE_INTERMEDIATE
 	{
 		parent = VmcJoint.RIGHT_MIDDLE_PROXIMAL,
 		body = HumanoidModel.Joint.RIGHT_MIDDLE_INTERMEDIATE,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 48: VmcJoint.RIGHT_MIDDLE_DISTAL
 	{
 		parent = VmcJoint.RIGHT_MIDDLE_INTERMEDIATE,
 		body = HumanoidModel.Joint.RIGHT_MIDDLE_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 49: VmcJoint.RIGHT_RING_PROXIMAL
 	{
 		parent = VmcJoint.RIGHT_HAND,
 		body = HumanoidModel.Joint.RIGHT_RING_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 50: VmcJoint.RIGHT_RING_INTERMEDIATE
 	{
 		parent = VmcJoint.RIGHT_RING_PROXIMAL,
 		body = HumanoidModel.Joint.RIGHT_RING_INTERMEDIATE,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 51: VmcJoint.RIGHT_RING_DISTAL
 	{
 		parent = VmcJoint.RIGHT_RING_INTERMEDIATE,
 		body = HumanoidModel.Joint.RIGHT_RING_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 52: VmcJoint.RIGHT_LITTLE_PROXIMAL
 	{
 		parent = VmcJoint.RIGHT_HAND,
 		body = HumanoidModel.Joint.RIGHT_LITTLE_PROXIMAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 53: VmcJoint.RIGHT_LITTLE_INTERMEDIATE
 	{
 		parent = VmcJoint.RIGHT_LITTLE_PROXIMAL,
 		body = HumanoidModel.Joint.RIGHT_LITTLE_INTERMEDIATE,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 	# 54: VmcJoint.RIGHT_LITTLE_DISTAL
 	{
 		parent = VmcJoint.RIGHT_LITTLE_INTERMEDIATE,
 		body = HumanoidModel.Joint.RIGHT_LITTLE_DISTAL,
-		roll = Quaternion.IDENTITY
+		roll = Quaternion(0.5, 0.5, -0.5, 0.5)
 	},
 ]
 
@@ -645,8 +648,8 @@ func _decode_bone_pos(
 
 	# Construct and save the joint
 	var joint := AnimationJoint.new()
-	joint.position = Vector3(data_values[0], data_values[1], data_values[2])
-	joint.rotation = Quaternion(data_values[3], data_values[4], data_values[5], data_values[6])
+	joint.position = Vector3(data_values[0], data_values[1], -data_values[2])
+	joint.rotation = Quaternion(data_values[3], data_values[4], -data_values[5], -data_values[6])
 	_vmc_joints[id] = joint
 	return true
 

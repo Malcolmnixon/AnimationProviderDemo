@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bncrjur5tni1j"]
+
+[ext_resource type="Script" path="res://addons/AnimationProviders/vmc/vmc_animation_provider.gd" id="1_xmi02"]
+
+[node name="VmcAnimationProvider" type="Node"]
+script = ExtResource("1_xmi02")

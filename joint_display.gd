@@ -20,6 +20,9 @@ func _ready():
 	var joints := _reader.get_body_joints()
 	for key in joints:
 		var axis : Node3D = Axis3Scene.instantiate()
+		var key_name : String = HumanoidModel.Joint.keys()[key]
+		print("key = ", key, ", ", key_name)
+		axis.name = key_name
 		_targets[key] = axis
 		add_child(axis)
 
