@@ -65,7 +65,6 @@ func _populate_animations() -> void:
 	_animation.loop_mode = Animation.LOOP_LINEAR
 	for info in HumanoidModel.Skeleton:
 		var body : int = info["body"]
-		var parent : int = info["parent"]
 		var bone : String = info["bone"]
 		var tpose : Quaternion = info["tpose"]
 
@@ -79,7 +78,7 @@ func _populate_animations() -> void:
 		var rt := _animation.add_track(Animation.TYPE_ROTATION_3D)
 		_rotation_tracks[body] = rt
 		_animation.track_set_path(rt, ":" + bone)
-		_animation.rotation_track_insert_key(rt, 0, Quaternion.IDENTITY)
+		_animation.rotation_track_insert_key(rt, 0, tpose)
 
 
 # Update the animations
@@ -96,8 +95,8 @@ func _update_animations() -> void:
 		var bone : String = info["bone"]
 		var joint : AnimationJoint = _joints.get(body)
 		if not joint: continue
-		var pos : Vector3 = _joints[body].position
-		var rot : Quaternion = _joints[body].rotation
+		var pos : Vector3 = joint.position
+		var rot : Quaternion = joint.rotation
 
 		# If parent then make relative to parent
 		if parent >= 0:
