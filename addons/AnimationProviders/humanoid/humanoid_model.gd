@@ -56,9 +56,116 @@ enum Joint {
 	COUNT = 50
 }
 
-## Standard face blends
-enum FaceBlend {
-	COUNT = 0
+## Standard face blends - Unified Blend Shapes + Emotions + Visemes + Vowels
+enum FaceBlendShapes {
+	EYE_LOOK_UP_RIGHT = 0,
+	EYE_LOOK_DOWN_RIGHT = 1,
+	EYE_LOOK_IN_RIGHT = 2,
+	EYE_LOOK_OUT_RIGHT = 3,
+	EYE_LOOK_UP_LEFT = 4,
+	EYE_LOOK_DOWN_LEFT = 5,
+	EYE_LOOK_IN_LEFT = 6,
+	EYE_LOOK_OUT_LEFT = 7,
+	EYE_CLOSED_RIGHT = 8,
+	EYE_CLOSED_LEFT = 9,
+	EYE_SQUINT_RIGHT = 10,
+	EYE_SQUINT_LEFT = 11,
+	EYE_WIDE_RIGHT = 12,
+	EYE_WIDE_LEFT = 13,
+	EYE_DILATION_RIGHT = 14,
+	EYE_DILATION_LEFT = 15,
+	EYE_CONSTRICT_RIGHT = 16,
+	EYE_CONSTRICT_LEFT = 17,
+	BROW_DOWN_RIGHT = 18,
+	BROW_DOWN_LEFT = 19,
+	BROW_INNER_UP_RIGHT = 20,
+	BROW_INNER_UP_LEFT = 21,
+	BROW_INNER_UP = 22,
+	BROW_OUTER_UP_RIGHT = 23,
+	BROW_OUTER_UP_LEFT = 24,
+	NOSE_SNEER_RIGHT = 25,
+	NOSE_SNEER_LEFT = 26,
+	CHEEK_SQUINT_RIGHT = 27,
+	CHEEK_SQUINT_LEFT = 28,
+	CHEEK_PUFF_RIGHT = 29,
+	CHEEK_PUFF_LEFT = 30,
+	CHEEK_PUFF = 31,
+	CHEEK_SUCK_RIGHT = 32,
+	CHEEK_SUCK_LEFT = 33,
+	CHEEK_SUCK = 34,
+	JAW_OPEN = 35,
+	MOUTH_CLOSED = 36,
+	JAW_RIGHT = 37,
+	JAW_LEFT = 38,
+	JAW_FORWARD = 39,
+	LIP_SUCK_UPPER_RIGHT = 40,
+	LIP_SUCK_UPPER_LEFT = 41,
+	LIP_SUCK_UPPER = 42,
+	LIP_SUCK_LOWER_RIGHT = 43,
+	LIP_SUCK_LOWER_LEFT = 44,
+	LIP_SUCK_LOWER = 45,
+	LIP_FUNNEL_UPPER_RIGHT = 46,
+	LIP_FUNNEL_UPPER_LEFT = 47,
+	LIP_FUNNEL_UPPER = 48,
+	LIP_FUNNEL_LOWER_RIGHT = 49,
+	LIP_FUNNEL_LOWER_LEFT = 50,
+	LIP_FUNNEL_LOWER = 51,
+	LIP_FUNNEL = 52,
+	LIP_PUCKER_UPPER_RIGHT = 53,
+	LIP_PUCKER_LOWER_RIGHT = 54,
+	LIP_PUCKER_UPPER_LEFT = 55,
+	LIP_PUCKER_LOWER_LEFT = 56,
+	LIP_PUCKER = 57,
+	MOUTH_UPPER_UP_RIGHT = 58,
+	MOUTH_UPPER_UP_LEFT = 59,
+	MOUTH_LOWER_DOWN_RIGHT = 60,
+	MOUTH_LOWER_DOWN_LEFT = 61,
+	MOUTH_SMILE_RIGHT = 62,
+	MOUTH_SMILE_LEFT = 63,
+	MOUTH_FROWN_RIGHT = 64,
+	MOUTH_FROWN_LEFT = 65,
+	MOUTH_SAD_RIGHT = 66,
+	MOUTH_SAD_LEFT = 67,
+	MOUTH_STRETCH_RIGHT = 68,
+	MOUTH_STRETCH_LEFT = 69,
+	MOUTH_DIMPLER_RIGHT = 70,
+	MOUTH_DIMPLER_LEFT = 71,
+	MOUTH_RAISER_UPPER = 72,
+	MOUTH_RAISER_LOWER = 73,
+	MOUTH_PRESS_RIGHT = 74,
+	MOUTH_PRESS_LEFT = 75,
+	MOUTH_TIGHTENER_RIGHT = 76,
+	MOUTH_TIGHTENER_LEFT = 77,
+	TONGUE_OUT = 78,
+	TONGUE_UP = 79,
+	TONGUE_DOWN = 80,
+	TONGUE_RIGHT = 81,
+	TONGUE_LEFT = 82,
+	TONGUE_ROLL = 83,
+	EMOTION_ANGRY = 84,
+	EMOTION_SORROW = 85,
+	EMOTION_SURPRISE = 86,
+	EMOTION_FUN = 87,
+	EMOTION_JOY = 88,
+	BLINK = 89,
+	BLINK_RIGHT = 90,
+	BLINK_LEFT = 91,
+	VISEME_AA = 92,		# Vowel A
+	VISEME_CH = 93,
+	VISEME_DD = 94,
+	VISEME_EE = 95,		# Vowel E
+	VISEME_FF = 96,
+	VISEME_IH = 97,		# Vowel I
+	VISEME_KK = 98,
+	VISEME_NN = 99,
+	VISEME_OH = 100,	# Vowel O
+	VISEME_OU = 101,	# Vowel U
+	VISEME_PP = 102,
+	VISEME_RR = 103,
+	VISEME_SS = 104,
+	VISEME_SIL = 105,
+	VISEME_TH = 106,
+	COUNT = 107
 }
 
 
@@ -370,5 +477,544 @@ const Skeleton = [
 		parent = Joint.RIGHT_LOWER_LEG,
 		bone = "RightFoot",
 		tpose = Quaternion(0.0, _SIN45, -_SIN45, 0.0)
+	}
+]
+
+## Humanoid Blend Shapes Information
+const BlendShapes = [
+	{
+		blend = FaceBlendShapes.EYE_LOOK_UP_RIGHT,
+		unified = "EyeLookUpRight",
+		arkit = "eyeLookUpRight"
+	},
+	{
+		blend = FaceBlendShapes.EYE_LOOK_DOWN_RIGHT,
+		unified = "EyeLookDownRight",
+		arkit = "eyeLookDownRight"
+	},
+	{
+		blend = FaceBlendShapes.EYE_LOOK_IN_RIGHT,
+		unified = "EyeLookInRight",
+		arkit = "eyeLookInRight"
+	},
+	{
+		blend = FaceBlendShapes.EYE_LOOK_OUT_RIGHT,
+		unified = "EyeLookOutRight",
+		arkit = "eyeLookOutRight"
+	},
+	{
+		blend = FaceBlendShapes.EYE_LOOK_UP_LEFT,
+		unified = "EyeLookUpLeft",
+		arkit = "eyeLookUpLeft"
+	},
+	{
+		blend = FaceBlendShapes.EYE_LOOK_DOWN_LEFT,
+		unified = "EyeLookDownLeft",
+		arkit = "eyeLookDownLeft"
+	},
+	{
+		blend = FaceBlendShapes.EYE_LOOK_IN_LEFT,
+		unified = "EyeLookInLeft",
+		arkit = "eyeLookInLeft"
+	},
+	{
+		blend = FaceBlendShapes.EYE_LOOK_OUT_LEFT,
+		unified = "EyeLookOutLeft",
+		arkit = "eyeLookOutLeft"
+	},
+	{
+		blend = FaceBlendShapes.EYE_CLOSED_RIGHT,
+		unified = "EyeClosedRight",
+		arkit = "eyeBlinkRight"
+	},
+	{
+		blend = FaceBlendShapes.EYE_CLOSED_LEFT,
+		unified = "EyeClosedLeft",
+		arkit = "eyeBlinkLeft"
+	},
+	{
+		blend = FaceBlendShapes.EYE_SQUINT_RIGHT,
+		unified = "EyeSquintRight",
+		arkit = "eyeSquintRight"
+	},
+	{
+		blend = FaceBlendShapes.EYE_SQUINT_LEFT,
+		unified = "EyeSquintLeft",
+		arkit = "eyeSquintLeft"
+	},
+	{
+		blend = FaceBlendShapes.EYE_WIDE_RIGHT,
+		unified = "EyeWideRight",
+		arkit = "eyeWideRight"
+	},
+	{
+		blend = FaceBlendShapes.EYE_WIDE_LEFT,
+		unified = "EyeWideLeft",
+		arkit = "eyeWideLeft"
+	},
+	{
+		blend = FaceBlendShapes.EYE_DILATION_RIGHT,
+		unified = "EyeDilationRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.EYE_DILATION_LEFT,
+		unified = "EyeDilationLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.EYE_CONSTRICT_RIGHT,
+		unified = "EyeConstrictRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.EYE_CONSTRICT_LEFT,
+		unified = "EyeConstrictLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.BROW_DOWN_RIGHT,
+		unified = "BrowDownRight",
+		arkit = "browDownRight"
+	},
+	{
+		blend = FaceBlendShapes.BROW_DOWN_LEFT,
+		unified = "BrowDownLeft",
+		arkit = "browDownLeft"
+	},
+	{
+		blend = FaceBlendShapes.BROW_INNER_UP_RIGHT,
+		unified = "BrowInnerUpRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.BROW_INNER_UP_LEFT,
+		unified = "BrowInnerUpLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.BROW_INNER_UP,
+		unified = "BrowInnerUp",
+		arkit = "browInnerUp"
+	},
+	{
+		blend = FaceBlendShapes.BROW_OUTER_UP_RIGHT,
+		unified = "BrowOuterUpRight",
+		arkit = "browOuterUpRight"
+	},
+	{
+		blend = FaceBlendShapes.BROW_OUTER_UP_LEFT,
+		unified = "BrowOuterUpLeft",
+		arkit = "browOuterUpLeft"
+	},
+	{
+		blend = FaceBlendShapes.NOSE_SNEER_RIGHT,
+		unified = "NoseSneerRight",
+		arkit = "noseSneerRight"
+	},
+	{
+		blend = FaceBlendShapes.NOSE_SNEER_LEFT,
+		unified = "NoseSneerLeft",
+		arkit = "noseSneerLeft"
+	},
+	{
+		blend = FaceBlendShapes.CHEEK_SQUINT_RIGHT,
+		unified = "CheekSquintRight",
+		arkit = "cheekSquintRight"
+	},
+	{
+		blend = FaceBlendShapes.CHEEK_SQUINT_LEFT,
+		unified = "CheekSquintLeft",
+		arkit = "cheekSquintLeft"
+	},
+	{
+		blend = FaceBlendShapes.CHEEK_PUFF_RIGHT,
+		unified = "CheekPuffRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.CHEEK_PUFF_LEFT,
+		unified = "CheekPuffLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.CHEEK_PUFF,
+		unified = "CheekPuff",
+		arkit = "cheekPuff"
+	},
+	{
+		blend = FaceBlendShapes.CHEEK_SUCK_RIGHT,
+		unified = "CheekSuckRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.CHEEK_SUCK_LEFT,
+		unified = "CheekSuckLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.CHEEK_SUCK,
+		unified = "CheekSuck",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.JAW_OPEN,
+		unified = "JawOpen",
+		arkit = "jawOpen"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_CLOSED,
+		unified = "MouthClosed",
+		arkit = "mouthClose"
+	},
+	{
+		blend = FaceBlendShapes.JAW_RIGHT,
+		unified = "JawRight",
+		arkit = "jawRight"
+	},
+	{
+		blend = FaceBlendShapes.JAW_LEFT,
+		unified = "JawLeft",
+		arkit = "jawLeft"
+	},
+	{
+		blend = FaceBlendShapes.JAW_FORWARD,
+		unified = "JawForward",
+		arkit = "jawForward"
+	},
+	{
+		blend = FaceBlendShapes.LIP_SUCK_UPPER_RIGHT,
+		unified = "LipSuckUpperRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_SUCK_UPPER_LEFT,
+		unified = "LipSuckUpperLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_SUCK_UPPER,
+		unified = "LipSuckUpper",
+		arkit = "mouthRollUpper"
+	},
+	{
+		blend = FaceBlendShapes.LIP_SUCK_LOWER_RIGHT,
+		unified = "LipSuckLowerRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_SUCK_LOWER_LEFT,
+		unified = "LipSuckLowerLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_SUCK_LOWER,
+		unified = "LipSuckLower",
+		arkit = "mouthRollLower"
+	},
+	{
+		blend = FaceBlendShapes.LIP_FUNNEL_UPPER_RIGHT,
+		unified = "LipFunnelUpperRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_FUNNEL_UPPER_LEFT,
+		unified = "LipFunnelUpperLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_FUNNEL_UPPER,
+		unified = "LipFunnelUpper",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_FUNNEL_LOWER_RIGHT,
+		unified = "LipFunnelLowerRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_FUNNEL_LOWER_LEFT,
+		unified = "LipFunnelLowerLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_FUNNEL_LOWER,
+		unified = "LipFunnelLower",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_FUNNEL,
+		unified = "LipFunnel",
+		arkit = "mouthFunnel"
+	},
+	{
+		blend = FaceBlendShapes.LIP_PUCKER_UPPER_RIGHT,
+		unified = "LipPuckerUpperRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_PUCKER_LOWER_RIGHT,
+		unified = "LipPuckerLowerRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_PUCKER_UPPER_LEFT,
+		unified = "LipPuckerUpperLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_PUCKER_LOWER_LEFT,
+		unified = "LipPuckerLowerLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.LIP_PUCKER,
+		unified = "LipPucker",
+		arkit = "mouthPucker"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_UPPER_UP_RIGHT,
+		unified = "MouthUpperUpRight",
+		arkit = "mouthUpperUpRight"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_UPPER_UP_LEFT,
+		unified = "MouthUpperUpLeft",
+		arkit = "mouthUpperUpLeft"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_LOWER_DOWN_RIGHT,
+		unified = "MouthLowerDownRight",
+		arkit = "mouthLowerUpRight"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_LOWER_DOWN_LEFT,
+		unified = "MouthLowerDownLeft",
+		arkit = "mouthLowerUpLeft"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_SMILE_RIGHT,
+		unified = "MouthSmileRight",
+		arkit = "mouthSmileRight"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_SMILE_LEFT,
+		unified = "MouthSmileLeft",
+		arkit = "mouthSmileLeft"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_FROWN_RIGHT,
+		unified = "MouthFrownRight",
+		arkit = "mouthFrownRight"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_FROWN_LEFT,
+		unified = "MouthFrownLeft",
+		arkit = "mouthFrownLeft"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_SAD_RIGHT,
+		unified = "MouthSadRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_SAD_LEFT,
+		unified = "MouthSadLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_STRETCH_RIGHT,
+		unified = "MouthStretchRight",
+		arkit = "mouthStretchRight"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_STRETCH_LEFT,
+		unified = "MouthStretchLeft",
+		arkit = "mouthStretchLeft"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_DIMPLER_RIGHT,
+		unified = "MouthDimplerRight",
+		arkit = "mouthDimpleRight"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_DIMPLER_LEFT,
+		unified = "MouthDimplerLeft",
+		arkit = "mouthDimpleLeft"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_RAISER_UPPER,
+		unified = "MouthRaiserUpper",
+		arkit = "mouthShrugUpper"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_RAISER_LOWER,
+		unified = "MouthRaiserLower",
+		arkit = "mouthShrugLower"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_PRESS_RIGHT,
+		unified = "MouthPressRight",
+		arkit = "mouthPressRight"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_PRESS_LEFT,
+		unified = "MouthPressLeft",
+		arkit = "mouthPressLeft"
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_TIGHTENER_RIGHT,
+		unified = "MouthTightenerRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.MOUTH_TIGHTENER_LEFT,
+		unified = "MouthTightenerLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.TONGUE_OUT,
+		unified = "TongueOut",
+		arkit = "tongueOut"
+	},
+	{
+		blend = FaceBlendShapes.TONGUE_UP,
+		unified = "TongueUp",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.TONGUE_DOWN,
+		unified = "TongueDown",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.TONGUE_RIGHT,
+		unified = "TongueRight",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.TONGUE_LEFT,
+		unified = "TongueLeft",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.TONGUE_ROLL,
+		unified = "TongueRoll",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.EMOTION_ANGRY,
+		unified = "Angry",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.EMOTION_SORROW,
+		unified = "Sorrow",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.EMOTION_SURPRISE,
+		unified = "Surprise",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.EMOTION_FUN,
+		unified = "Fun",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.EMOTION_JOY,
+		unified = "Joy",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.BLINK,
+		unified = "Blink",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.BLINK_RIGHT,
+		unified = "Blink.R",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.BLINK_LEFT,
+		unified = "Blink.L",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_AA,
+		unified = "AA",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_CH,
+		unified = "CH",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_DD,
+		unified = "DD",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_EE,
+		unified = "E",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_FF,
+		unified = "FF",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_IH,
+		unified = "I",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_KK,
+		unified = "KK",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_NN,
+		unified = "NN",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_OH,
+		unified = "O",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_OU,
+		unified = "U",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_PP,
+		unified = "PP",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_RR,
+		unified = "RR",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_SIL,
+		unified = "SIL",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_SS,
+		unified = "SS",
+		arkit = ""
+	},
+	{
+		blend = FaceBlendShapes.VISEME_TH,
+		unified = "TH",
+		arkit = ""
 	}
 ]

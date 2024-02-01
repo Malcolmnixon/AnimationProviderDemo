@@ -6,6 +6,9 @@ extends HumanoidAnimationProvider
 ## UDP Receive Port
 @export var port : int = 39539 : set = _set_port
 
+## Face mesh name
+@export var face_mesh : String = "Face"
+
 
 # Vmc Reader
 var _reader : VmcReader = VmcReader.new()
@@ -18,6 +21,9 @@ var _rotation_tracks := {}
 
 # Position tracks by body-joint
 var _position_tracks := {}
+
+# Blend tracks by blend-shape
+var _blend_tracks := {}
 
 
 # Handle node ready
@@ -63,6 +69,8 @@ func _populate_animations() -> void:
 
 	_animation.clear()
 	_animation.loop_mode = Animation.LOOP_LINEAR
+
+	# Add the skeleton tracks
 	for info in HumanoidModel.Skeleton:
 		var body : int = info["body"]
 		var bone : String = info["bone"]
@@ -79,6 +87,17 @@ func _populate_animations() -> void:
 		_rotation_tracks[body] = rt
 		_animation.track_set_path(rt, ":" + bone)
 		_animation.rotation_track_insert_key(rt, 0, tpose)
+
+	# Add the face blend shape tracks
+	for blend in VmcReader.VmcSupportedFaceBlendShapes:
+		var info : Dictionary = HumanoidModel.BlendShapes[blend]
+		var unified : String = info["unified"]
+		var arkit : String = info["arkit"]
+
+		var bt := _animation.add_track(Animation.TYPE_BLEND_SHAPE)
+		_blend_tracks[blend] = bt
+		_animation.track_set_path(bt, face_mesh + ":" + unified)
+		_animation.blend_shape_track_insert_key(bt, 0, 0.0)
 
 
 # Update the animations
@@ -109,3 +128,9 @@ func _update_animations() -> void:
 		# Update the animation
 		#_animation.track_set_key_value(_position_tracks[body], 0, pos)
 		_animation.track_set_key_value(_rotation_tracks[body], 0, rot)
+
+	# Apply the face blend data
+	var _blends := _reader.get_face_blends()
+	for blend in _blends:
+		var weight : float = _blends[blend]
+		_animation.track_set_key_value(_blend_tracks[blend], 0, weight)

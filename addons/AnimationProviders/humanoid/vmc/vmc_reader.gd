@@ -63,8 +63,29 @@ enum VmcJoint {
 	COUNT = 55
 }
 
+## Enumeration of VMC blend shapes
+enum VmcBlendShapes {
+	A = 0,
+	I = 1,
+	U = 2,
+	E = 3,
+	O = 4,
+	BLINK = 5,
+	BLINK_L = 6,
+	BLINK_R = 7,
+	FUN = 8,
+	SORROW = 9,
+	ANGRY = 10,
+	JOY = 11,
+	LOOK_UP = 12,
+	LOOK_DOWN = 13,
+	LOOK_LEFT = 14,
+	LOOK_RIGHT = 15,
+	COUNT = 16
+}
+
 # VMC Joint names
-var _vmc_joint_names := {
+const VmcJointNames := {
 	"Hips" : VmcJoint.HIPS,
 	"Spine" : VmcJoint.SPINE,
 	"Chest" : VmcJoint.CHEST,
@@ -122,10 +143,31 @@ var _vmc_joint_names := {
 	"RightLittleDistal" : VmcJoint.RIGHT_LITTLE_DISTAL
 }
 
+# VMC Blend Shape names
+const VmcBlendShapeNames := {
+	"a" : VmcBlendShapes.A,
+	"i" : VmcBlendShapes.I,
+	"u" : VmcBlendShapes.U,
+	"e" : VmcBlendShapes.E,
+	"o" : VmcBlendShapes.O,
+	"blink" : VmcBlendShapes.BLINK,
+	"blink_l" : VmcBlendShapes.BLINK_L,
+	"blink_r" : VmcBlendShapes.BLINK_R,
+	"fun" : VmcBlendShapes.FUN,
+	"sorrow" : VmcBlendShapes.SORROW,
+	"angry" : VmcBlendShapes.ANGRY,
+	"joy" : VmcBlendShapes.JOY,
+	"lookUp" : VmcBlendShapes.LOOK_UP,
+	"lookDown" : VmcBlendShapes.LOOK_DOWN,
+	"lookLeft" : VmcBlendShapes.LOOK_LEFT,
+	"lookRight" : VmcBlendShapes.LOOK_RIGHT
+}
+
 # Sqrt 1/2 (for roll)
 const _SQRT12 : float = 0.707106781186548
 
-const _vmc_joint_info : Array[Dictionary] = [
+# VMC Joint Information
+const VmcJointInformation : Array[Dictionary] = [
 	# 0: VmcJoint.HIPS
 	{
 		parent = -1,
@@ -458,6 +500,90 @@ const _vmc_joint_info : Array[Dictionary] = [
 	},
 ]
 
+# VMC Blend Shape Information
+const VmcBlendShapeInformation : Array[Dictionary] = [
+	# 0: VmcBlendShapes.A
+	{
+		blend = HumanoidModel.FaceBlendShapes.VISEME_AA
+	},
+	# 1: VmcBlendShapes.I
+	{
+		blend = HumanoidModel.FaceBlendShapes.VISEME_IH
+	},
+	# 2: VmcBlendShapes.U
+	{
+		blend = HumanoidModel.FaceBlendShapes.VISEME_OU
+	},
+	# 3: VmcBlendShapes.E
+	{
+		blend = HumanoidModel.FaceBlendShapes.VISEME_EE
+	},
+	# 4: VmcBlendShapes.O
+	{
+		blend = HumanoidModel.FaceBlendShapes.VISEME_OH
+	},
+	# 5: VmcBlendShapes.BLINK
+	{
+		blend = HumanoidModel.FaceBlendShapes.BLINK
+	},
+	# 6: VmcBlendShapes.BLINK_L
+	{
+		blend = HumanoidModel.FaceBlendShapes.BLINK_LEFT
+	},
+	# 7: VmcBlendShapes.BLINK_R
+	{
+		blend = HumanoidModel.FaceBlendShapes.BLINK_RIGHT
+	},
+	# 8: VmcBlendShapes.FUN
+	{
+		blend = HumanoidModel.FaceBlendShapes.EMOTION_FUN
+	},
+	# 9: VmcBlendShapes.SORROW
+	{
+		blend = HumanoidModel.FaceBlendShapes.EMOTION_SORROW
+	},
+	# 10: VmcBlendShapes.ANGRY
+	{
+		blend = HumanoidModel.FaceBlendShapes.EMOTION_ANGRY
+	},
+	# 11: VmcBlendShapes.JOY
+	{
+		blend = HumanoidModel.FaceBlendShapes.EMOTION_JOY
+	},
+	# 12: VmcBlendShapes.LOOK_UP
+	{
+		blend = -1
+	},
+	# 13: VmcBlendShapes.LOOK_DOWN
+	{
+		blend = -1
+	},
+	# 14: VmcBlendShapes.LOOK_LEFT
+	{
+		blend = -1
+	},
+	# 15: VmcBlendShapes.LOOK_RIGHT
+	{
+		blend = -1
+	}
+]
+
+## Array of supported face blend shapes
+const VmcSupportedFaceBlendShapes := [
+	HumanoidModel.FaceBlendShapes.VISEME_AA,
+	HumanoidModel.FaceBlendShapes.VISEME_IH,
+	HumanoidModel.FaceBlendShapes.VISEME_OU,
+	HumanoidModel.FaceBlendShapes.VISEME_EE,
+	HumanoidModel.FaceBlendShapes.VISEME_OH,
+	HumanoidModel.FaceBlendShapes.BLINK,
+	HumanoidModel.FaceBlendShapes.BLINK_LEFT,
+	HumanoidModel.FaceBlendShapes.BLINK_RIGHT,
+	HumanoidModel.FaceBlendShapes.EMOTION_FUN,
+	HumanoidModel.FaceBlendShapes.EMOTION_SORROW,
+	HumanoidModel.FaceBlendShapes.EMOTION_ANGRY,
+	HumanoidModel.FaceBlendShapes.EMOTION_JOY
+]
+
 
 # UDP Server
 var _server : UDPServer = UDPServer.new()
@@ -469,10 +595,13 @@ var _connection : PacketPeerUDP
 var _vmc_joints : Array[AnimationJoint] = []
 
 # Dictionary of blends (Float)
-var _vmc_blends := {}
+var _vmc_blends : Array[float] = []
 
 # Body joints
 var _body_joints := {}
+
+# Face blends
+var _face_blends := {}
 
 
 ## Initialize the class
@@ -483,10 +612,21 @@ func _init() -> void:
 		_vmc_joints.append(AnimationJoint.new())
 
 		# Add the body joint
-		var joint_info : Dictionary = _vmc_joint_info[index]
+		var joint_info : Dictionary = VmcJointInformation[index]
 		var body_joint : int = joint_info["body"]
 		if body_joint >= 0:
 			_body_joints[body_joint] = AnimationJoint.new()
+
+	# Construct the blends
+	for index in VmcBlendShapes.COUNT:
+		# Add the VMC blend-shape
+		_vmc_blends.append(0.0)
+
+		# Add the face blend
+		var blend_info : Dictionary = VmcBlendShapeInformation[index]
+		var face_blend : int = blend_info["blend"]
+		if face_blend >= 0:
+			_face_blends[face_blend] = 0.0
 
 
 ## Stop listening
@@ -529,7 +669,7 @@ func read() -> bool:
 	for index in VmcJoint.COUNT:
 		# Get the joint and informatio
 		var joint := _vmc_joints[index]
-		var info := _vmc_joint_info[index]
+		var info := VmcJointInformation[index]
 
 		# Get the position and rotation
 		var pos := joint.position
@@ -551,6 +691,17 @@ func read() -> bool:
 			_body_joints[body_index].position = pos
 			_body_joints[body_index].rotation = rot * roll
 
+	# Apply face blends
+	for blend in VmcBlendShapes.COUNT:
+		# Get the info and weight
+		var info := VmcBlendShapeInformation[blend]
+		var weight := _vmc_blends[blend]
+
+		# Set face blends
+		var face_blend : int = info["blend"]
+		if face_blend >= 0:
+			_face_blends[face_blend] = weight
+
 	return new_data
 
 
@@ -561,7 +712,7 @@ func get_body_joints() -> Dictionary:
 
 ## Get a dictionary of FaceBlend weights
 func get_face_blends() -> Dictionary:
-	return {}
+	return _face_blends
 
 
 # Decode an OSC block
@@ -646,7 +797,7 @@ func _decode_bone_pos(
 	p_data_end : int) -> bool:
 
 	# Look up the joint-id - skip if not found
-	var id : int = _vmc_joint_names.get(p_name, -1)
+	var id : int = VmcJointNames.get(p_name, -1)
 	if id < 0:
 		return true
 
@@ -676,6 +827,11 @@ func _decode_blend_value(
 	p_data_pos : int,
 	p_data_end : int) -> bool:
 
+	# Look up the blend-id - skip if not found
+	var id : int = VmcBlendShapeNames.get(p_name, -1)
+	if id < 0:
+		return true
+
 	# Ensure we have the exact data (float)
 	if p_data_end != p_data_pos + 4:
 		push_warning("VmcReader - Bad blend data size")
@@ -686,7 +842,7 @@ func _decode_blend_value(
 	data_bytes.reverse()
 
 	# Save the blend
-	_vmc_blends[p_name] = data_bytes.decode_float(0)
+	_vmc_blends[id] = data_bytes.decode_float(0)
 	return true
 
 
