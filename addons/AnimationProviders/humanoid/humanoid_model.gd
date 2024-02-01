@@ -135,7 +135,7 @@ const Skeleton = [
 		body = Joint.LEFT_THUMB_METACARPAL,
 		parent = Joint.LEFT_HAND,
 		bone = "LeftThumbMetacarpal",
-		tpose = Quaternion(-0.215, 0.673, 0.214, 0.673)
+		tpose = Quaternion(-0.2126311, 0.6743797, 0.2126311, 0.6743797)
 	},
 	{
 		body = Joint.LEFT_THUMB_PROXIMAL,
@@ -249,7 +249,7 @@ const Skeleton = [
 		body = Joint.RIGHT_THUMB_METACARPAL,
 		parent = Joint.RIGHT_HAND,
 		bone = "RightThumbMetacarpal",
-		tpose = Quaternion(-0.215, -0.673, -0.214, 0.673)
+		tpose = Quaternion(-0.2126311, -0.6743797, -0.2126311, 0.6743797)
 	},
 	{
 		body = Joint.RIGHT_THUMB_PROXIMAL,
