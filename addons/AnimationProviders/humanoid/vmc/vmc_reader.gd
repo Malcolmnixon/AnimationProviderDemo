@@ -580,6 +580,7 @@ func _decode_osc_block(
 			var child_pos := pos + 4
 			var child_end := child_pos + _decode_u32_be(p_packet, pos)
 			if child_end > p_block_end:
+				push_warning("VmcReader - bundle block overrun")
 				return false
 
 			# Decode the OSC block
@@ -592,23 +593,36 @@ func _decode_osc_block(
 		# Processed as bundle
 		return true
 
-	# Get the element address
+	# Find the element address
 	var address_end := p_packet.find(0, p_block_pos)
-	if address_end < 0 or address_end > p_block_end: return false
-	var address := p_packet.slice(p_block_pos, address_end).get_string_from_ascii()
-	if not address.begins_with("/VMC/Ext/"): return false
+	if address_end < 0 or address_end > p_block_end: 
+		push_warning("VmcReader - Element address overrun")
+		return false
 
-	# Get the element format
+	# Get the element address, and skip if we don't care about it
+	var address := p_packet.slice(p_block_pos, address_end).get_string_from_ascii()
+	if not address.begins_with("/VMC/Ext/"):
+		return false
+
+	# Find the element format
 	var format_pos := (address_end + 4) & ~3
 	var format_end := p_packet.find(0, format_pos)
-	if format_end < 0 or format_end > p_block_end: return false
+	if format_end < 0 or format_end > p_block_end:
+		push_warning("VmcReader - Element format overrun")
+		return false
+
+	# Get the element format, and skip if we don't care about it
 	var format := p_packet.slice(format_pos, format_end).get_string_from_ascii()
 	if not format.begins_with(",sf"): return false
 
-	# Get the element name
+	# Find the element name
 	var name_pos := (format_end + 4) & ~3
 	var name_end := p_packet.find(0, name_pos)
-	if name_end < 0 or name_end > p_block_end: return false
+	if name_end < 0 or name_end > p_block_end:
+		push_warning("VmcReader - Element name overrun")
+		return false
+
+	# Get the element name
 	var name := p_packet.slice(name_pos, name_end).get_string_from_ascii()
 	
 	# Parse the data
@@ -620,7 +634,7 @@ func _decode_osc_block(
 		"/VMC/Ext/Blend/Val":
 			return _decode_blend_value(p_packet, name, data_pos, p_block_end)
 
-	# Unknown data
+	# Ignore unknown data
 	return false
 
 
@@ -638,6 +652,7 @@ func _decode_bone_pos(
 
 	# Ensure we have the exact data (Vector3 + Quaternion)
 	if p_data_end != p_data_pos + 28:
+		push_warning("VmcReader - Bad joint data size")
 		return false
 
 	# Shenanigans due to Godot not having big-endian decode
@@ -663,6 +678,7 @@ func _decode_blend_value(
 
 	# Ensure we have the exact data (float)
 	if p_data_end != p_data_pos + 4:
+		push_warning("VmcReader - Bad blend data size")
 		return false
 
 	# Shenanigans due to Godot not having big-endian decode

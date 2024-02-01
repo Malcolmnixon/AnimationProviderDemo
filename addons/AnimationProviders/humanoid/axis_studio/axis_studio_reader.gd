@@ -492,15 +492,23 @@ func read() -> bool:
 
 	# Skip invalid packets
 	if packet.size() < 64:
+		push_warning("AxisStudioReader: Runt packet - ", packet.size())
 		return false
 
-	# Skip if header or footer are incorrect
-	if packet.decode_u16(0) != 0xDDFF or packet.decode_u16(62) != 0xEEFF:
+	# Skip if the header isn't correct
+	if packet.decode_u16(0) != 0xDDFF:
+		push_warning("AxisStudioReader: Bad header - ", packet.decode_u16(0))
+		return false
+
+	# Skip if the footer isn't correct
+	if packet.decode_u16(62) != 0xEEFF:
+		push_warning("AxisStudioReader: Bad footer - ", packet.decode_u16(62))
 		return false
 
 	# Verify the number of joints
 	var asj_count := packet.decode_u16(6) / 6
 	if asj_count != AxisStudioJoint.COUNT:
+		push_warning("AxisStudioReader: Unexpected joint count - ", asj_count)
 		return false
 
 	# Process the joints (axis-studio tree)
