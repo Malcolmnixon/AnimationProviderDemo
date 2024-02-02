@@ -37,7 +37,7 @@ bones/33/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Avatar/AvatarHumanoid2/AvatarHumanoid" index="1"]
 root_node = NodePath("../GeneralSkeleton")
-autoplay = "AxisStudio/AxisStudio"
+autoplay = "Movella/Movella"
 
 [node name="Movella" parent="Avatar/AvatarHumanoid2/AvatarHumanoid/AnimationPlayer" instance=ExtResource("2_thtci")]
 

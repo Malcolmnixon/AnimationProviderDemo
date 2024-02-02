@@ -40,7 +40,6 @@ root_node = NodePath("../GeneralSkeleton")
 autoplay = "AxisStudio/AxisStudio"
 
 [node name="AxisStudio" parent="Avatar/AvatarHumanoid2/AvatarHumanoid/AnimationPlayer" instance=ExtResource("2_bxv1c")]
-run = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.875852, -0.169153, 0.451963, 0, 0.936556, 0.350518, -0.482579, -0.307002, 0.820285, 0.754584, 1.48103, 1.37458)
