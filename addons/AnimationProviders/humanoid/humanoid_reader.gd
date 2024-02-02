@@ -15,15 +15,15 @@ func read() -> bool:
 	return false
 
 
-## Get a dictionary of BodyJoint
-func get_body_joints() -> Dictionary:
+## Get a dictionary of AnimationJoint by Humanoid.Joint
+func get_humanoid_joints() -> Dictionary:
 	push_error("Only implementations of HumanoidReader should be used")
 	breakpoint
 	return {}
 
 
-## Get a dictionary of FaceBlend weights
-func get_face_blends() -> Dictionary:
+## Get a dictionary of blend weight by Humanoid.FaceBlend
+func get_humanoid_face_blends() -> Dictionary:
 	push_error("Only implementations of HumanoidReader should be used")
 	breakpoint
 	return {}

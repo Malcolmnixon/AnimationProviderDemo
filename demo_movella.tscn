@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://drwsujphce6yb"]
+
+[ext_resource type="PackedScene" uid="uid://cvd2r6ea2mlhm" path="res://assets/avatar/AvatarHumanoid.gltf" id="1_c7t40"]
+[ext_resource type="PackedScene" uid="uid://23pxamo087er" path="res://addons/AnimationProviders/movella/movella_animation_provider.tscn" id="2_thtci"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eism1"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ly1xu"]
+sky_material = SubResource("ProceduralSkyMaterial_eism1")
+
+[sub_resource type="Environment" id="Environment_18n6m"]
+background_mode = 2
+sky = SubResource("Sky_ly1xu")
+tonemap_mode = 2
+
+[node name="DemoMovella" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_18n6m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Avatar" type="Node3D" parent="."]
+
+[node name="AvatarHumanoid2" parent="Avatar" instance=ExtResource("1_c7t40")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
+
+[node name="GeneralSkeleton" parent="Avatar/AvatarHumanoid2/AvatarHumanoid" index="0"]
+bones/9/rotation = Quaternion(-0.212631, 0.67438, 0.212631, 0.67438)
+bones/10/rotation = Quaternion(1.49012e-08, 0, 0, 1)
+bones/32/rotation = Quaternion(-0.212631, -0.67438, -0.212631, 0.67438)
+bones/33/rotation = Quaternion(1.49012e-08, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Avatar/AvatarHumanoid2/AvatarHumanoid" index="1"]
+root_node = NodePath("../GeneralSkeleton")
+autoplay = "AxisStudio/AxisStudio"
+
+[node name="Movella" parent="Avatar/AvatarHumanoid2/AvatarHumanoid/AnimationPlayer" instance=ExtResource("2_thtci")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.875852, -0.169153, 0.451963, 0, 0.936556, 0.350518, -0.482579, -0.307002, 0.820285, 0.754584, 1.48103, 1.37458)
+
+[editable path="Avatar/AvatarHumanoid2"]

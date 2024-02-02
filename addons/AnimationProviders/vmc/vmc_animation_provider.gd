@@ -107,7 +107,7 @@ func _update_animations() -> void:
 		return
 
 	# Apply the joint data
-	var _joints := _reader.get_body_joints()
+	var _joints := _reader.get_humanoid_joints()
 	for info in HumanoidModel.Skeleton:
 		var body : int = info["body"]
 		var parent : int = info["parent"]
@@ -130,7 +130,7 @@ func _update_animations() -> void:
 		_animation.track_set_key_value(_rotation_tracks[body], 0, rot)
 
 	# Apply the face blend data
-	var _blends := _reader.get_face_blends()
+	var _blends := _reader.get_humanoid_face_blends()
 	for blend in _blends:
 		var weight : float = _blends[blend]
 		_animation.track_set_key_value(_blend_tracks[blend], 0, weight)

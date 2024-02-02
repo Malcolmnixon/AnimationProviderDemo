@@ -56,8 +56,8 @@ enum Joint {
 	COUNT = 50
 }
 
-## Standard face blends - Unified Blend Shapes + Emotions + Visemes + Vowels
-enum FaceBlendShapes {
+## Standard humanoid face blends - Unified Blend Shapes + Emotions + Visemes + Vowels
+enum FaceBlend {
 	EYE_LOOK_UP_RIGHT = 0,
 	EYE_LOOK_DOWN_RIGHT = 1,
 	EYE_LOOK_IN_RIGHT = 2,
@@ -483,537 +483,537 @@ const Skeleton = [
 ## Humanoid Blend Shapes Information
 const BlendShapes = [
 	{
-		blend = FaceBlendShapes.EYE_LOOK_UP_RIGHT,
+		blend = FaceBlend.EYE_LOOK_UP_RIGHT,
 		unified = "EyeLookUpRight",
 		arkit = "eyeLookUpRight"
 	},
 	{
-		blend = FaceBlendShapes.EYE_LOOK_DOWN_RIGHT,
+		blend = FaceBlend.EYE_LOOK_DOWN_RIGHT,
 		unified = "EyeLookDownRight",
 		arkit = "eyeLookDownRight"
 	},
 	{
-		blend = FaceBlendShapes.EYE_LOOK_IN_RIGHT,
+		blend = FaceBlend.EYE_LOOK_IN_RIGHT,
 		unified = "EyeLookInRight",
 		arkit = "eyeLookInRight"
 	},
 	{
-		blend = FaceBlendShapes.EYE_LOOK_OUT_RIGHT,
+		blend = FaceBlend.EYE_LOOK_OUT_RIGHT,
 		unified = "EyeLookOutRight",
 		arkit = "eyeLookOutRight"
 	},
 	{
-		blend = FaceBlendShapes.EYE_LOOK_UP_LEFT,
+		blend = FaceBlend.EYE_LOOK_UP_LEFT,
 		unified = "EyeLookUpLeft",
 		arkit = "eyeLookUpLeft"
 	},
 	{
-		blend = FaceBlendShapes.EYE_LOOK_DOWN_LEFT,
+		blend = FaceBlend.EYE_LOOK_DOWN_LEFT,
 		unified = "EyeLookDownLeft",
 		arkit = "eyeLookDownLeft"
 	},
 	{
-		blend = FaceBlendShapes.EYE_LOOK_IN_LEFT,
+		blend = FaceBlend.EYE_LOOK_IN_LEFT,
 		unified = "EyeLookInLeft",
 		arkit = "eyeLookInLeft"
 	},
 	{
-		blend = FaceBlendShapes.EYE_LOOK_OUT_LEFT,
+		blend = FaceBlend.EYE_LOOK_OUT_LEFT,
 		unified = "EyeLookOutLeft",
 		arkit = "eyeLookOutLeft"
 	},
 	{
-		blend = FaceBlendShapes.EYE_CLOSED_RIGHT,
+		blend = FaceBlend.EYE_CLOSED_RIGHT,
 		unified = "EyeClosedRight",
 		arkit = "eyeBlinkRight"
 	},
 	{
-		blend = FaceBlendShapes.EYE_CLOSED_LEFT,
+		blend = FaceBlend.EYE_CLOSED_LEFT,
 		unified = "EyeClosedLeft",
 		arkit = "eyeBlinkLeft"
 	},
 	{
-		blend = FaceBlendShapes.EYE_SQUINT_RIGHT,
+		blend = FaceBlend.EYE_SQUINT_RIGHT,
 		unified = "EyeSquintRight",
 		arkit = "eyeSquintRight"
 	},
 	{
-		blend = FaceBlendShapes.EYE_SQUINT_LEFT,
+		blend = FaceBlend.EYE_SQUINT_LEFT,
 		unified = "EyeSquintLeft",
 		arkit = "eyeSquintLeft"
 	},
 	{
-		blend = FaceBlendShapes.EYE_WIDE_RIGHT,
+		blend = FaceBlend.EYE_WIDE_RIGHT,
 		unified = "EyeWideRight",
 		arkit = "eyeWideRight"
 	},
 	{
-		blend = FaceBlendShapes.EYE_WIDE_LEFT,
+		blend = FaceBlend.EYE_WIDE_LEFT,
 		unified = "EyeWideLeft",
 		arkit = "eyeWideLeft"
 	},
 	{
-		blend = FaceBlendShapes.EYE_DILATION_RIGHT,
+		blend = FaceBlend.EYE_DILATION_RIGHT,
 		unified = "EyeDilationRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.EYE_DILATION_LEFT,
+		blend = FaceBlend.EYE_DILATION_LEFT,
 		unified = "EyeDilationLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.EYE_CONSTRICT_RIGHT,
+		blend = FaceBlend.EYE_CONSTRICT_RIGHT,
 		unified = "EyeConstrictRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.EYE_CONSTRICT_LEFT,
+		blend = FaceBlend.EYE_CONSTRICT_LEFT,
 		unified = "EyeConstrictLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.BROW_DOWN_RIGHT,
+		blend = FaceBlend.BROW_DOWN_RIGHT,
 		unified = "BrowDownRight",
 		arkit = "browDownRight"
 	},
 	{
-		blend = FaceBlendShapes.BROW_DOWN_LEFT,
+		blend = FaceBlend.BROW_DOWN_LEFT,
 		unified = "BrowDownLeft",
 		arkit = "browDownLeft"
 	},
 	{
-		blend = FaceBlendShapes.BROW_INNER_UP_RIGHT,
+		blend = FaceBlend.BROW_INNER_UP_RIGHT,
 		unified = "BrowInnerUpRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.BROW_INNER_UP_LEFT,
+		blend = FaceBlend.BROW_INNER_UP_LEFT,
 		unified = "BrowInnerUpLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.BROW_INNER_UP,
+		blend = FaceBlend.BROW_INNER_UP,
 		unified = "BrowInnerUp",
 		arkit = "browInnerUp"
 	},
 	{
-		blend = FaceBlendShapes.BROW_OUTER_UP_RIGHT,
+		blend = FaceBlend.BROW_OUTER_UP_RIGHT,
 		unified = "BrowOuterUpRight",
 		arkit = "browOuterUpRight"
 	},
 	{
-		blend = FaceBlendShapes.BROW_OUTER_UP_LEFT,
+		blend = FaceBlend.BROW_OUTER_UP_LEFT,
 		unified = "BrowOuterUpLeft",
 		arkit = "browOuterUpLeft"
 	},
 	{
-		blend = FaceBlendShapes.NOSE_SNEER_RIGHT,
+		blend = FaceBlend.NOSE_SNEER_RIGHT,
 		unified = "NoseSneerRight",
 		arkit = "noseSneerRight"
 	},
 	{
-		blend = FaceBlendShapes.NOSE_SNEER_LEFT,
+		blend = FaceBlend.NOSE_SNEER_LEFT,
 		unified = "NoseSneerLeft",
 		arkit = "noseSneerLeft"
 	},
 	{
-		blend = FaceBlendShapes.CHEEK_SQUINT_RIGHT,
+		blend = FaceBlend.CHEEK_SQUINT_RIGHT,
 		unified = "CheekSquintRight",
 		arkit = "cheekSquintRight"
 	},
 	{
-		blend = FaceBlendShapes.CHEEK_SQUINT_LEFT,
+		blend = FaceBlend.CHEEK_SQUINT_LEFT,
 		unified = "CheekSquintLeft",
 		arkit = "cheekSquintLeft"
 	},
 	{
-		blend = FaceBlendShapes.CHEEK_PUFF_RIGHT,
+		blend = FaceBlend.CHEEK_PUFF_RIGHT,
 		unified = "CheekPuffRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.CHEEK_PUFF_LEFT,
+		blend = FaceBlend.CHEEK_PUFF_LEFT,
 		unified = "CheekPuffLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.CHEEK_PUFF,
+		blend = FaceBlend.CHEEK_PUFF,
 		unified = "CheekPuff",
 		arkit = "cheekPuff"
 	},
 	{
-		blend = FaceBlendShapes.CHEEK_SUCK_RIGHT,
+		blend = FaceBlend.CHEEK_SUCK_RIGHT,
 		unified = "CheekSuckRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.CHEEK_SUCK_LEFT,
+		blend = FaceBlend.CHEEK_SUCK_LEFT,
 		unified = "CheekSuckLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.CHEEK_SUCK,
+		blend = FaceBlend.CHEEK_SUCK,
 		unified = "CheekSuck",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.JAW_OPEN,
+		blend = FaceBlend.JAW_OPEN,
 		unified = "JawOpen",
 		arkit = "jawOpen"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_CLOSED,
+		blend = FaceBlend.MOUTH_CLOSED,
 		unified = "MouthClosed",
 		arkit = "mouthClose"
 	},
 	{
-		blend = FaceBlendShapes.JAW_RIGHT,
+		blend = FaceBlend.JAW_RIGHT,
 		unified = "JawRight",
 		arkit = "jawRight"
 	},
 	{
-		blend = FaceBlendShapes.JAW_LEFT,
+		blend = FaceBlend.JAW_LEFT,
 		unified = "JawLeft",
 		arkit = "jawLeft"
 	},
 	{
-		blend = FaceBlendShapes.JAW_FORWARD,
+		blend = FaceBlend.JAW_FORWARD,
 		unified = "JawForward",
 		arkit = "jawForward"
 	},
 	{
-		blend = FaceBlendShapes.LIP_SUCK_UPPER_RIGHT,
+		blend = FaceBlend.LIP_SUCK_UPPER_RIGHT,
 		unified = "LipSuckUpperRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_SUCK_UPPER_LEFT,
+		blend = FaceBlend.LIP_SUCK_UPPER_LEFT,
 		unified = "LipSuckUpperLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_SUCK_UPPER,
+		blend = FaceBlend.LIP_SUCK_UPPER,
 		unified = "LipSuckUpper",
 		arkit = "mouthRollUpper"
 	},
 	{
-		blend = FaceBlendShapes.LIP_SUCK_LOWER_RIGHT,
+		blend = FaceBlend.LIP_SUCK_LOWER_RIGHT,
 		unified = "LipSuckLowerRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_SUCK_LOWER_LEFT,
+		blend = FaceBlend.LIP_SUCK_LOWER_LEFT,
 		unified = "LipSuckLowerLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_SUCK_LOWER,
+		blend = FaceBlend.LIP_SUCK_LOWER,
 		unified = "LipSuckLower",
 		arkit = "mouthRollLower"
 	},
 	{
-		blend = FaceBlendShapes.LIP_FUNNEL_UPPER_RIGHT,
+		blend = FaceBlend.LIP_FUNNEL_UPPER_RIGHT,
 		unified = "LipFunnelUpperRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_FUNNEL_UPPER_LEFT,
+		blend = FaceBlend.LIP_FUNNEL_UPPER_LEFT,
 		unified = "LipFunnelUpperLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_FUNNEL_UPPER,
+		blend = FaceBlend.LIP_FUNNEL_UPPER,
 		unified = "LipFunnelUpper",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_FUNNEL_LOWER_RIGHT,
+		blend = FaceBlend.LIP_FUNNEL_LOWER_RIGHT,
 		unified = "LipFunnelLowerRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_FUNNEL_LOWER_LEFT,
+		blend = FaceBlend.LIP_FUNNEL_LOWER_LEFT,
 		unified = "LipFunnelLowerLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_FUNNEL_LOWER,
+		blend = FaceBlend.LIP_FUNNEL_LOWER,
 		unified = "LipFunnelLower",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_FUNNEL,
+		blend = FaceBlend.LIP_FUNNEL,
 		unified = "LipFunnel",
 		arkit = "mouthFunnel"
 	},
 	{
-		blend = FaceBlendShapes.LIP_PUCKER_UPPER_RIGHT,
+		blend = FaceBlend.LIP_PUCKER_UPPER_RIGHT,
 		unified = "LipPuckerUpperRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_PUCKER_LOWER_RIGHT,
+		blend = FaceBlend.LIP_PUCKER_LOWER_RIGHT,
 		unified = "LipPuckerLowerRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_PUCKER_UPPER_LEFT,
+		blend = FaceBlend.LIP_PUCKER_UPPER_LEFT,
 		unified = "LipPuckerUpperLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_PUCKER_LOWER_LEFT,
+		blend = FaceBlend.LIP_PUCKER_LOWER_LEFT,
 		unified = "LipPuckerLowerLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.LIP_PUCKER,
+		blend = FaceBlend.LIP_PUCKER,
 		unified = "LipPucker",
 		arkit = "mouthPucker"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_UPPER_UP_RIGHT,
+		blend = FaceBlend.MOUTH_UPPER_UP_RIGHT,
 		unified = "MouthUpperUpRight",
 		arkit = "mouthUpperUpRight"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_UPPER_UP_LEFT,
+		blend = FaceBlend.MOUTH_UPPER_UP_LEFT,
 		unified = "MouthUpperUpLeft",
 		arkit = "mouthUpperUpLeft"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_LOWER_DOWN_RIGHT,
+		blend = FaceBlend.MOUTH_LOWER_DOWN_RIGHT,
 		unified = "MouthLowerDownRight",
 		arkit = "mouthLowerUpRight"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_LOWER_DOWN_LEFT,
+		blend = FaceBlend.MOUTH_LOWER_DOWN_LEFT,
 		unified = "MouthLowerDownLeft",
 		arkit = "mouthLowerUpLeft"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_SMILE_RIGHT,
+		blend = FaceBlend.MOUTH_SMILE_RIGHT,
 		unified = "MouthSmileRight",
 		arkit = "mouthSmileRight"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_SMILE_LEFT,
+		blend = FaceBlend.MOUTH_SMILE_LEFT,
 		unified = "MouthSmileLeft",
 		arkit = "mouthSmileLeft"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_FROWN_RIGHT,
+		blend = FaceBlend.MOUTH_FROWN_RIGHT,
 		unified = "MouthFrownRight",
 		arkit = "mouthFrownRight"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_FROWN_LEFT,
+		blend = FaceBlend.MOUTH_FROWN_LEFT,
 		unified = "MouthFrownLeft",
 		arkit = "mouthFrownLeft"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_SAD_RIGHT,
+		blend = FaceBlend.MOUTH_SAD_RIGHT,
 		unified = "MouthSadRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_SAD_LEFT,
+		blend = FaceBlend.MOUTH_SAD_LEFT,
 		unified = "MouthSadLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_STRETCH_RIGHT,
+		blend = FaceBlend.MOUTH_STRETCH_RIGHT,
 		unified = "MouthStretchRight",
 		arkit = "mouthStretchRight"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_STRETCH_LEFT,
+		blend = FaceBlend.MOUTH_STRETCH_LEFT,
 		unified = "MouthStretchLeft",
 		arkit = "mouthStretchLeft"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_DIMPLER_RIGHT,
+		blend = FaceBlend.MOUTH_DIMPLER_RIGHT,
 		unified = "MouthDimplerRight",
 		arkit = "mouthDimpleRight"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_DIMPLER_LEFT,
+		blend = FaceBlend.MOUTH_DIMPLER_LEFT,
 		unified = "MouthDimplerLeft",
 		arkit = "mouthDimpleLeft"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_RAISER_UPPER,
+		blend = FaceBlend.MOUTH_RAISER_UPPER,
 		unified = "MouthRaiserUpper",
 		arkit = "mouthShrugUpper"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_RAISER_LOWER,
+		blend = FaceBlend.MOUTH_RAISER_LOWER,
 		unified = "MouthRaiserLower",
 		arkit = "mouthShrugLower"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_PRESS_RIGHT,
+		blend = FaceBlend.MOUTH_PRESS_RIGHT,
 		unified = "MouthPressRight",
 		arkit = "mouthPressRight"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_PRESS_LEFT,
+		blend = FaceBlend.MOUTH_PRESS_LEFT,
 		unified = "MouthPressLeft",
 		arkit = "mouthPressLeft"
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_TIGHTENER_RIGHT,
+		blend = FaceBlend.MOUTH_TIGHTENER_RIGHT,
 		unified = "MouthTightenerRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.MOUTH_TIGHTENER_LEFT,
+		blend = FaceBlend.MOUTH_TIGHTENER_LEFT,
 		unified = "MouthTightenerLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.TONGUE_OUT,
+		blend = FaceBlend.TONGUE_OUT,
 		unified = "TongueOut",
 		arkit = "tongueOut"
 	},
 	{
-		blend = FaceBlendShapes.TONGUE_UP,
+		blend = FaceBlend.TONGUE_UP,
 		unified = "TongueUp",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.TONGUE_DOWN,
+		blend = FaceBlend.TONGUE_DOWN,
 		unified = "TongueDown",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.TONGUE_RIGHT,
+		blend = FaceBlend.TONGUE_RIGHT,
 		unified = "TongueRight",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.TONGUE_LEFT,
+		blend = FaceBlend.TONGUE_LEFT,
 		unified = "TongueLeft",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.TONGUE_ROLL,
+		blend = FaceBlend.TONGUE_ROLL,
 		unified = "TongueRoll",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.EMOTION_ANGRY,
+		blend = FaceBlend.EMOTION_ANGRY,
 		unified = "Angry",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.EMOTION_SORROW,
+		blend = FaceBlend.EMOTION_SORROW,
 		unified = "Sorrow",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.EMOTION_SURPRISE,
+		blend = FaceBlend.EMOTION_SURPRISE,
 		unified = "Surprise",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.EMOTION_FUN,
+		blend = FaceBlend.EMOTION_FUN,
 		unified = "Fun",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.EMOTION_JOY,
+		blend = FaceBlend.EMOTION_JOY,
 		unified = "Joy",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.BLINK,
+		blend = FaceBlend.BLINK,
 		unified = "Blink",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.BLINK_RIGHT,
+		blend = FaceBlend.BLINK_RIGHT,
 		unified = "Blink.R",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.BLINK_LEFT,
+		blend = FaceBlend.BLINK_LEFT,
 		unified = "Blink.L",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_AA,
+		blend = FaceBlend.VISEME_AA,
 		unified = "AA",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_CH,
+		blend = FaceBlend.VISEME_CH,
 		unified = "CH",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_DD,
+		blend = FaceBlend.VISEME_DD,
 		unified = "DD",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_EE,
+		blend = FaceBlend.VISEME_EE,
 		unified = "E",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_FF,
+		blend = FaceBlend.VISEME_FF,
 		unified = "FF",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_IH,
+		blend = FaceBlend.VISEME_IH,
 		unified = "I",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_KK,
+		blend = FaceBlend.VISEME_KK,
 		unified = "KK",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_NN,
+		blend = FaceBlend.VISEME_NN,
 		unified = "NN",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_OH,
+		blend = FaceBlend.VISEME_OH,
 		unified = "O",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_OU,
+		blend = FaceBlend.VISEME_OU,
 		unified = "U",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_PP,
+		blend = FaceBlend.VISEME_PP,
 		unified = "PP",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_RR,
+		blend = FaceBlend.VISEME_RR,
 		unified = "RR",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_SIL,
+		blend = FaceBlend.VISEME_SIL,
 		unified = "SIL",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_SS,
+		blend = FaceBlend.VISEME_SS,
 		unified = "SS",
 		arkit = ""
 	},
 	{
-		blend = FaceBlendShapes.VISEME_TH,
+		blend = FaceBlend.VISEME_TH,
 		unified = "TH",
 		arkit = ""
 	}

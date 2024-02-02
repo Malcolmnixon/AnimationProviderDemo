@@ -1,16 +1,16 @@
 @tool
-class_name AxisStudioAnimationProvider
+class_name MovellaAnimationProvider
 extends HumanoidAnimationProvider
 
 
 ## UDP Receive Port
-@export var port : int = 7004 : set = _set_port
+@export var port : int = 9763 : set = _set_port
 
 
-# Axis Studio Reader
-var _reader : AxisStudioReader = AxisStudioReader.new()
+# Movella Reader
+var _reader : MovellaReader = MovellaReader.new()
 
-# Axis Studio animation instance
+# Movella animation instance
 var _animation : Animation
 
 # Rotation tracks by body-joint
@@ -48,13 +48,13 @@ func _initialize_animations() -> void:
 	super()
 
 	# Get (or create) the animation
-	if _library.has_animation("AxisStudio"):
-		_animation = _library.get_animation("AxisStudio")
+	if _library.has_animation("Movella"):
+		_animation = _library.get_animation("Movella")
 	else:
 		_animation = Animation.new()
-		_animation.resource_name = "AxisStudio"
+		_animation.resource_name = "Movella"
 		_animation.resource_local_to_scene = true
-		_library.add_animation("AxisStudio", _animation)
+		_library.add_animation("Movella", _animation)
 
 
 # Populate the animations

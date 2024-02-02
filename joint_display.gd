@@ -5,7 +5,7 @@ extends Node3D
 const Axis3Scene : PackedScene = preload("res://helpers/axis_3.tscn")
 
 
-var _reader : VmcReader
+var _reader : MovellaReader
 
 var _targets : Dictionary = {}
 
@@ -13,7 +13,7 @@ var _targets : Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Construct the reader
-	_reader = VmcReader.new()
+	_reader = MovellaReader.new()
 	_reader.listen()
 
 	# Construct the targets
