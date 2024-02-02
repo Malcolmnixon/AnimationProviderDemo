@@ -31,9 +31,9 @@ transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="Avatar/AvatarHumanoid2/AvatarHumanoid" index="0"]
 bones/9/rotation = Quaternion(-0.212631, 0.67438, 0.212631, 0.67438)
-bones/10/rotation = Quaternion(1.49012e-08, 0, 0, 1)
+bones/10/rotation = Quaternion(0, 0, 0, 1)
 bones/32/rotation = Quaternion(-0.212631, -0.67438, -0.212631, 0.67438)
-bones/33/rotation = Quaternion(1.49012e-08, 0, 0, 1)
+bones/33/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Avatar/AvatarHumanoid2/AvatarHumanoid" index="1"]
 root_node = NodePath("../GeneralSkeleton")

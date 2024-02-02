@@ -28,6 +28,7 @@ func _initialize_animations() -> void:
 # Populate the animations
 func _populate_animations() -> void:
 	_reset_animation.clear()
+	_reset_animation.length = 0
 	for info in HumanoidModel.Skeleton:
 		var bone : String = info["bone"]
 		var tpose : Quaternion = info["tpose"]

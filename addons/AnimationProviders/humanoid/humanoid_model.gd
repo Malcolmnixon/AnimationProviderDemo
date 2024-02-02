@@ -253,7 +253,7 @@ const Skeleton = [
 	{
 		body = Joint.LEFT_THUMB_DISTAL,
 		parent = Joint.LEFT_THUMB_PROXIMAL,
-		bone = "LeftThumbProximal",
+		bone = "LeftThumbDistal",
 		tpose = Quaternion.IDENTITY
 	},
 	{
@@ -367,7 +367,7 @@ const Skeleton = [
 	{
 		body = Joint.RIGHT_THUMB_DISTAL,
 		parent = Joint.RIGHT_THUMB_PROXIMAL,
-		bone = "RightThumbProximal",
+		bone = "RightThumbDistal",
 		tpose = Quaternion.IDENTITY
 	},
 	{

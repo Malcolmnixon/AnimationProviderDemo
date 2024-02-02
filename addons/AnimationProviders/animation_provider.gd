@@ -17,21 +17,21 @@ var _library : AnimationLibrary
 
 # Handle node ready
 func _ready() -> void:
-	# Get the animation mixer
-	var mixer := get_parent() as AnimationMixer
-	if not mixer:
+	# Get the animation player
+	var player := get_parent() as AnimationPlayer
+	if not player:
 		# No mixer - skip processing
 		set_physics_process(false)
 		return
 
 	# Get (or create) the animation library
-	if mixer.has_animation_library(name):
-		_library = mixer.get_animation_library(name)
+	if player.has_animation_library(name):
+		_library = player.get_animation_library(name)
 	else:
 		_library = AnimationLibrary.new()
 		_library.resource_name = name
 		_library.resource_local_to_scene = true
-		mixer.add_animation_library(name, _library)
+		player.add_animation_library(name, _library)
 
 	# Initialize the animation
 	_initialize_animations()
@@ -45,10 +45,10 @@ func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
 
 	# Check correct parent node
-	var mixer := get_parent() as AnimationMixer
-	if not mixer:
+	var player := get_parent() as AnimationPlayer
+	if not player:
 		warnings.append(
-			"Parent node is not AnimationMixer (AnimationPlayer or AnimationTree)")
+			"Parent node is not AnimationPlayer")
 
 	return warnings
 

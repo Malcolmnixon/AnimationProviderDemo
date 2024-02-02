@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://do51lveb8cyou"]
+
+[ext_resource type="PackedScene" uid="uid://bhc6nngwjdvum" path="res://assets/test_chan/Test-Chan.fbx" id="1_4lfwq"]
+[ext_resource type="PackedScene" uid="uid://bncrjur5tni1j" path="res://addons/AnimationProviders/vmc/vmc_animation_provider.tscn" id="2_ae4kl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_avp7v"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_iaxte"]
+sky_material = SubResource("ProceduralSkyMaterial_avp7v")
+
+[sub_resource type="Environment" id="Environment_vbrak"]
+background_mode = 2
+sky = SubResource("Sky_iaxte")
+tonemap_mode = 2
+
+[node name="DemoVmcChan" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vbrak")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Avatar" type="Node3D" parent="."]
+
+[node name="Root Scene" parent="Avatar" instance=ExtResource("1_4lfwq")]
+
+[node name="GeneralSkeleton" parent="Avatar/Root Scene/RootNode/Armature" index="0"]
+bones/99/rotation = Quaternion(-0.212631, 0.67438, 0.212631, 0.67438)
+bones/100/rotation = Quaternion(0, 0, 0, 1)
+bones/118/rotation = Quaternion(-0.212631, -0.67438, -0.212631, 0.67438)
+bones/119/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="Body" parent="Avatar/Root Scene/RootNode/Armature/GeneralSkeleton" index="0"]
+blend_shapes/AA = 0.0147741
+blend_shapes/Blink.L = 0.00674458
+blend_shapes/Blink.R = 0.00782646
+blend_shapes/E = 0.000191587
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Avatar/Root Scene/RootNode/Armature" index="1"]
+root_node = NodePath("../GeneralSkeleton")
+autoplay = "Vmc/Vmc"
+
+[node name="Vmc" parent="Avatar/Root Scene/RootNode/Armature/AnimationPlayer" instance=ExtResource("2_ae4kl")]
+face_mesh = "Body"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.875852, 0.169153, -0.451962, 1.03897e-08, 0.936556, 0.350518, 0.482579, 0.307002, -0.820285, -0.755, 1.481, -1.375)
+
+[editable path="Avatar/Root Scene"]

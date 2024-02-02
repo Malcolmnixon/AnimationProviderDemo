@@ -6,6 +6,12 @@ extends HumanoidAnimationProvider
 ## UDP Receive Port
 @export var port : int = 7004 : set = _set_port
 
+## Run the animation
+@export var run : bool = false : set = _set_run
+
+## Autorun the animation
+@export var autorun : bool = true
+
 
 # Axis Studio Reader
 var _reader : AxisStudioReader = AxisStudioReader.new()
@@ -23,7 +29,13 @@ var _position_tracks := {}
 # Handle node ready
 func _ready() -> void:
 	super()
-	_update_port()
+
+	# Update the run state
+	_update_run()
+
+	# Autorun if needed
+	if not Engine.is_editor_hint() and autorun and not run:
+		run = true
 
 
 # Get the humanoid reader
@@ -35,12 +47,22 @@ func get_reader() -> HumanoidReader:
 func _set_port(p_port : int) -> void:
 	port = p_port
 	if is_inside_tree():
-		_update_port()
+		_update_run()
 
 
-# Update the UDP port
-func _update_port() -> void:
-	_reader.listen(port)
+# Handle setting the run state
+func _set_run(p_run : bool) -> void:
+	run = p_run
+	if is_inside_tree():
+		_update_run()
+
+
+# Update the running state
+func _update_run() -> void:
+	if run:
+		_reader.listen(port)
+	else:
+		_reader.stop()
 
 
 # Initialize the animations
